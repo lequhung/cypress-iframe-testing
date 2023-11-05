@@ -1,27 +1,23 @@
 {
-  "name": "cypress-iframe-testing",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.0.1"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8",
-    "tailwindcss": "^3.3.0",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.1"
-  }
+    "name": "cypress-iframe-testing",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lequhung/cypress-iframe-testing.git"
+    },
+    "author": "Hung Le <hungqule@gmail.com>",
+    "workspaces": [
+        "packages/iframe-lib",
+        "packages/nextjs-app"
+    ],
+    "scripts": {
+        "start": "concurrently -k -s first \"npm run start -workspace=iframe-lib\" \"npm run dev -workspace=nextjs-app\"",
+        "test:cypress": "concurrently -k -s first \"npm start\" \"npm run wait:localhost-3000 && cypress open --e2e\"",
+        "wait:localhost-3000": "wait-on http-get://localhost:3000"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2",
+        "cypress": "^13.4.0",
+        "wait-on": "^7.1.0"
+      }
 }

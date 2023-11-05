@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# cypress-iframe-testing
 
-## Getting Started
+A quick demo for testing iframe in Cypress
 
-First, run the development server:
+## Technologies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- NextJS
+- Cypress 13
+- Webpack 5
+- NodeJS 20
+- NPM Workspaces
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Installation (Gotta force the installation to ignore warnings)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  ```sh
+  npm i --force
+  ```
 
-## Learn More
+- Start application (running on http://localhost:3030/index.js (lib) and http://localhost:3000 (app))
 
-To learn more about Next.js, take a look at the following resources:
+  ```sh
+  npm start
+  ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Open Cypress
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  ```sh
+  npm run test:cypress
+  ```
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Check the CSP for you app to allow iframe
+- Restrict iframe content by setting attributes such as `referrerpolicy` `sandbox` and `allowpaymentrequest`
+- Write a wrapper for third-party lib if possible
