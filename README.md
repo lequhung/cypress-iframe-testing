@@ -4,11 +4,11 @@ A quick demo for testing iframe in Cypress
 
 ## Technologies
 
-- NextJS
+- NextJS 14
 - Cypress 13
 - Webpack 5
 - NodeJS 20
-- NPM Workspaces
+- Monorepo with NPM Workspaces
 
 ## Usage
 
@@ -18,7 +18,7 @@ A quick demo for testing iframe in Cypress
   npm i --force
   ```
 
-- Start application (running on http://localhost:3030/index.js (lib) and http://localhost:3000 (app))
+- Start applications (running on http://localhost:3030/index.js (lib) and http://localhost:3000 (app))
 
   ```sh
   npm start
@@ -33,6 +33,6 @@ A quick demo for testing iframe in Cypress
 
 ## Notes
 
-- Check the CSP for you app to allow iframe
+- Update the CSP to allow iframe
 - Restrict iframe content by setting attributes such as `referrerpolicy` `sandbox` and `allowpaymentrequest`
-- Write a wrapper for third-party lib if possible
+- Write a wrapper for a third-party component for a better mocking/testing experience 

@@ -6,31 +6,31 @@ interface Props {
   mode: 'test' | 'prod' | 'mock';
 }
 
+// a component that injects a script which loads an iframe
 export default function IFrameLib<Props>({ mode }) {
-    React.useLayoutEffect(() => {
-      let src = '';
+  React.useLayoutEffect(() => {
+    const script = document.createElement( 'script' );
 
-      switch (mode) {
-        case 'prod':
-          src = 'some prod url';
-          break;
-        case 'mock':
-          src = 'http://localhost:3030/index.js';
-          break;
-        default:
-          src = 'some test url';
-          break;
-      };
+    script.setAttribute( 'src', getScriptUrl(mode));
+    script.onload = () => {
+      console.log('iframe loaded successfully!');
+    };
+    
+    document.body.appendChild(script);
+  }, []);
 
-      const script = document.createElement( 'script' );
-      script.setAttribute( 'src', src);
-      script.onload = () => {
-        console.log('iframe loaded successfully!');
-      };
-      document.body.appendChild(script);
-    }, []);
+  return (
+    <div id="iframe-testing"></div>
+  )
+}
 
-    return (
-      <div id="iframe-testing"></div>
-    )
-  }
+function getScriptUrl(mode) {
+  switch (mode) {
+    case 'prod':
+      return 'some prod url';
+    case 'mock':
+      return 'http://localhost:3030/index.js';
+    default:
+      return 'some test url';
+  };
+};

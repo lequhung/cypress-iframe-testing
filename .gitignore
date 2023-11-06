@@ -5,14 +5,8 @@
 /npm-debug.log
 
 # testing
-/coverage
-/jest-report.xml
+/cypress-report.xml
 /cypress-report.*.xml
-/bundle-analyzer-stats.json
-
-# production
-/build
-/dist
 
 # misc
 .DS_Store
